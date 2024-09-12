@@ -8,7 +8,7 @@ endpoints = {
       const tasksArray = [];
 
       if (tasks.empty) {
-        res.status(400).send('No tasks found');
+        return res.status(400).send('No tasks found');
       } else {
         tasks.forEach(doc => {
           const task = {

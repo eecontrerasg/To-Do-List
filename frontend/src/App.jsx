@@ -4,8 +4,7 @@ import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import TaskList from "./components/TaskList";
 import AddTab from "./components/AddTab";
-import { LoadingComponent } from "./components/LoadingComponent/LoadingComponent";
-import { useGetTasks } from "./hooks/useGetTasks";
+import { getTasks } from "./utils";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -17,32 +16,24 @@ const Item = styled(Paper)(({ theme }) => ({
 
 // This may be handled in another component but just for the example of this project App.js stores the main states and displays the main components
 function App() {
-  // This main states can be handled using context or a state handler like redux, just for the easesiness of the project will work as the main state handler
-  const [isLoading, setIsLoading] = useState(false);
-  const [clicked, setClicked] = useState(false);
-  const [filter, setFilter] = useState({ month: "", year: "" });
   const [tasks, setTasks] = useState([]);
 
-  useGetTasks();
+  useEffect(() => {
+    getTasks(setTasks);
+  }, [])
 
   return (
     <div className="App">
-      <LoadingComponent isLoading={isLoading} />
       <Grid container paddingTop={4} spacing={5}>
         <Grid item xs={1} />
         <Grid item xs={3}>
           <Item>
-            <AddTab
-              setWildfireData={setTasks}
-              filter={filter}
-              setFilter={setFilter}
-              setIsLoading={setIsLoading}
-              setClicked={setClicked}
+            <AddTab setTasks={setTasks} tasks={tasks}
             />
           </Item>
         </Grid>
         <Grid item xs={7}>
-          <TaskList tasks={tasks} setClicked={setClicked} clicked={clicked} />
+          <TaskList tasks={tasks} setTasks={setTasks} />
         </Grid>
         <Grid item xs={1} />
       </Grid>

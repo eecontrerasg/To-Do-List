@@ -1,0 +1,29 @@
+{
+  "name": "todolist-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "eslint": "eslint . --ext .js --config .eslintrc.json --fix",
+    "prettier:check": "prettier --config .prettierrc --check src/**/*.js",
+    "prettier:write": "prettier --config .prettierrc --write src/**/*.js"
+  },
+  "author": "Erick Contreras",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/eslint-parser": "^7.19.1",
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "eslint": "^8.33.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-prettier": "^4.2.1",
+    "express": "^4.17.3",
+    "firebase": "^10.13.1",
+    "firebase-admin": "^12.4.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.15"
+  }
+}
